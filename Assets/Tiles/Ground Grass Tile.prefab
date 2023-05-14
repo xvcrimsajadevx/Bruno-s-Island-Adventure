@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2272908747046052751}
   - component: {fileID: 1011960378738420823}
   m_Layer: 0
-  m_Name: Beach Tile
+  m_Name: Ground Grass Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 61b0993bb07ccfa4398a3f165e6106bc, type: 2}
+  - {fileID: 2100000, guid: e96b88e1caa324d4ab458429a5af7aa9, type: 2}
   - {fileID: 2100000, guid: 8c1da2b878c28ce47b58f41b9d45d052, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
