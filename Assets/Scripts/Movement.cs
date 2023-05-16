@@ -1,12 +1,37 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.AI;
+using System;
 
 namespace RPG.Character
 {
     public class Movement : MonoBehaviour
     {
-        public void HandleMove()
+        private NavMeshAgent agent;
+        private Vector3 movementVector;
+
+        private void Awake()
         {
-            print("WASD keys pressed!");
+            agent = GetComponent<NavMeshAgent>();
+        }
+
+        private void Update()
+        {
+            movePlayer();
+        }
+
+        private void movePlayer()
+        {
+            agent.Move(movementVector);
+        }
+
+        public void HandleMove(InputAction.CallbackContext context)
+        {
+            Vector2 input = context.ReadValue<Vector2>();
+
+            movementVector = new Vector3(input.x, 0, input.y);
+
+            print(movementVector);
         }
     }
 }
