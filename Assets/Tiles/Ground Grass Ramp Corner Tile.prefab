@@ -15,8 +15,8 @@ GameObject:
   m_Name: Ground Grass Ramp Corner Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7600678256419209837
 Transform:
@@ -99,8 +99,8 @@ GameObject:
   m_Name: Ground Grass Ramp Corner Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!4 &6437011948830008046
 Transform:
