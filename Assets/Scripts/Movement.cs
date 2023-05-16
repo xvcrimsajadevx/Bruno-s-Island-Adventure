@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
 using System;
+using UnityEngine.UIElements;
 
 namespace RPG.Character
 {
@@ -17,13 +18,28 @@ namespace RPG.Character
 
         private void Update()
         {
-            movePlayer();
+            MovePlayer();
+            RotatePlayer();
         }
 
-        private void movePlayer()
+        private void MovePlayer()
         {
             Vector3 offset = movementVector * Time.deltaTime * agent.speed;
             agent.Move(offset);
+        }
+
+        private void RotatePlayer()
+        {
+            if (movementVector == Vector3.zero) return;
+
+            Quaternion startRotation = transform.rotation;
+            Quaternion endRotation = Quaternion.LookRotation(movementVector);
+
+            transform.rotation = Quaternion.Lerp(
+                startRotation,
+                endRotation,
+                Time.deltaTime * agent.angularSpeed
+            );
         }
 
         public void HandleMove(InputAction.CallbackContext context)
