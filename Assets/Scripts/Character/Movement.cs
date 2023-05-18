@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
-using System;
-using UnityEngine.UIElements;
 
 namespace RPG.Character
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public class Movement : MonoBehaviour
     {
         private NavMeshAgent agent;
@@ -46,6 +45,11 @@ namespace RPG.Character
         {
             Vector2 input = context.ReadValue<Vector2>();
             movementVector = new Vector3(input.x, 0, input.y);
+        }
+
+        public void MoveAgentByDestination(Vector3 destination)
+        {
+            agent.SetDestination(destination);
         }
     }
 }

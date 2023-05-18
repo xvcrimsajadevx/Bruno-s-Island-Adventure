@@ -7,54 +7,51 @@ namespace RPG.Example
 {
     public class Robot : MonoBehaviour
     {
-        /*
-        Variables
-        =========
-        */
+        private BatteryRegulations includedBattery;
 
-        /*
-        public int age = 5;
-        public float price = 99.99f;
-        // private string name = "McBot";
-        public bool isTurnedOn = false;
-
-        public Robot()
+        Robot()
         {
-            // isTurnedOn = true;
-            float newPrice = CalculatePrice(0.7f, 1);
-
-            if (newPrice > 75f)
-            {
-                price = newPrice;
-            }
-            else
-            {
-                // print("Price is too low.");
-                // Debug.Log("Price is too low.");
-                // Debug.LogWarning("Price is too low.");
-                // Debug.LogError("Price is too low.");
-
-                Log("Price is too low!");
-                Log<int>(age);
-                Log(isTurnedOn);
-            }
+            includedBattery = new Battery(80f);
+            includedBattery.checkHealth();
+            Charger.chargeBattery(includedBattery);
+            includedBattery.checkHealth();
+            print(Charger.chargerInUse);
         }
-
-        [Obsolete("CalculatePrice() is deprecated. Use ApplyDiscount() instead.")]
-        public float CalculatePrice(float discount, int quantity)
-        {   
-            return (price - (price * discount)) * quantity;
-        }
-
-        public float ApplyDiscount(float discount)
-        {
-            return (price - (price * discount));
-        }
-
-        public void Log<T>(T message)
-        {
-            Debug.Log(message);
-        }
-        */
     }
+
+    public class Battery : BatteryRegulations
+    {
+        public Battery(float newHealth) : base(newHealth) { }
+
+        public override void checkHealth()
+        {
+            Debug.Log(health);
+        }
+    }
+
+    static class Charger
+    {
+        public static bool chargerInUse = false;
+
+        public static void chargeBattery(BatteryRegulations batteryToCharge)
+        {
+            chargerInUse = true;
+            batteryToCharge.health = 100f;
+        }
+    }
+
+    public abstract class BatteryRegulations
+    {
+        public float health;
+
+        public BatteryRegulations (float newHealth)
+        {
+            health = newHealth;
+            Debug.Log("New battery created.");
+        }
+
+        public abstract void checkHealth();
+    }
+
+    
 }
