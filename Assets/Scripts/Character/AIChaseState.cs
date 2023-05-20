@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace RPG.Character
 {
     public class AIChaseState : AIBaseState
